@@ -11,19 +11,22 @@
 
 <div class="utility-bar">
   <div class="inner">
-    <a href="mailto:luckwell@ms15.hinet.net">luckwell@ms15.hinet.net</a>
-    <a href="https://wa.me/886975137554" target="_blank" rel="noopener">WhatsApp Inquiry</a>
+    <span class="tagline">TAIWAN USED MOTORCYCLE &amp; CAR EXPORTER SINCE 1996</span>
+    <span class="links">
+      <a href="mailto:mary@luckwell.com">mary@luckwell.com</a>
+      <a href="https://wa.me/886975137554" target="_blank" rel="noopener">WhatsApp Inquiry</a>
+    </span>
   </div>
 </div>
 
 <header class="site-header">
-  <a class="logo" href="index.html"><img src="assets/logo.png" alt="LUCKWELL CO., LTD. 捷仕佳實業"></a>
+  <a class="logo" href="index.html"><img src="assets/logo.png" alt="Luckwell Co., Ltd."></a>
   <a class="tel" href="tel:+886223560332">TEL: +886-2-2356-0332<span>Mon–Fri 9:00–18:00 (Taiwan Time)</span></a>
 </header>
 
 <nav class="site-nav">
   <div class="inner">
-    <a class="home-link" href="index.html">HOME</a>
+    <a href="index.html">HOME</a>
     <a href="index.html#about">ABOUT US</a>
     <a href="motorcycles.html">USED MOTORCYCLE</a>
     <a class="active" href="cars.html">USED CARS</a>
@@ -33,97 +36,116 @@
 
 <div class="page-title">
   <div class="inner">
+    <div class="kicker">10 Models Available</div>
     <h1>USED CARS</h1>
-    <p>Toyota, Hyundai, Nissan &amp; Suzuki — available for wholesale export. Select a brand below.</p>
+    <p>Toyota, Hyundai, Nissan &amp; Suzuki — available for wholesale export from Taiwan. Browse all models or select a brand below.</p>
   </div>
 </div>
 
 <section>
   <div class="tabs" id="tabs"></div>
+  <div class="result-count" id="resultCount"></div>
   <div id="panels"></div>
 </section>
 
 <footer>
-  &copy; <span id="year"></span> Luckwell Co., Ltd. 捷仕佳實業 — Taiwan Used Motorcycle &amp; Car Exporter.
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <div class="footer-grid">
+    <div>
+      <img src="assets/logo.png" alt="Luckwell Co., Ltd.">
+      <p>Taiwan-based exporter of used motorcycles and cars since 1996. Every vehicle pre-shipment inspected. Bulk procurement available for dealers and fleet buyers worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>QUICK LINKS</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="motorcycles.html">Used Motorcycle</a></li>
+        <li><a href="cars.html">Used Cars</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>CONTACT</h4>
+      <ul>
+        <li>14F, No. 79-1, Shueiyaun Road, Taipei, Taiwan</li>
+        <li><a href="tel:+886223560332">TEL +886-2-2356-0332</a></li>
+        <li>FAX +886-2-2364-9800</li>
+        <li><a href="mailto:mary@luckwell.com">mary@luckwell.com</a></li>
+        <li><a href="https://wa.me/886975137554" target="_blank" rel="noopener">WhatsApp +886 975 137 554</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; <span id="year"></span> Luckwell Co., Ltd. — Taiwan Used Motorcycle &amp; Car Exporter.
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </div>
 </footer>
 
 <script>
-const WA = '886975137554';
+const ITEMS = [
+  {brand:'Toyota', name:'Corolla Altis', photo:'photos/toyota-corolla.jpg',   cat:'toyota'},
+  {brand:'Toyota', name:'Camry',         photo:'photos/toyota-camry.jpg',     cat:'toyota'},
+  {brand:'Toyota', name:'Yaris',         photo:'photos/toyota-yaris.jpg',     cat:'toyota'},
+  {brand:'Toyota', name:'Wish',          photo:'photos/toyota-wish.jpg',      cat:'toyota'},
+  {brand:'Toyota', name:'Vios',          photo:'photos/toyota-vios.jpg',      cat:'toyota'},
 
-const CATEGORIES = [
-  {
-    id: 'toyota',
-    label: 'Toyota',
-    models: [
-      ['Corolla Altis', 'photos/toyota-corolla.jpg'],
-      ['Camry', 'photos/toyota-camry.jpg'],
-      ['Yaris', 'photos/toyota-yaris.jpg'],
-      ['Wish', 'photos/toyota-wish.jpg'],
-      ['Vios', 'photos/toyota-vios.jpg'],
-    ]
-  },
-  {
-    id: 'hyundai',
-    label: 'Hyundai',
-    models: [
-      ['i30', 'photos/hyundai-i30.jpg'],
-      ['Santa Fe', 'photos/hyundai-santa-fe.jpg'],
-      ['Matrix', 'photos/hyundai-matrix.jpg'],
-    ]
-  },
-  {
-    id: 'nissan',
-    label: 'Nissan',
-    models: [
-      ['Tiida', 'photos/nissan-tiida.jpg'],
-    ]
-  },
-  {
-    id: 'suzuki',
-    label: 'Suzuki',
-    models: [
-      ['Carry', 'photos/suzuki-carry.jpg'],
-    ]
-  }
+  {brand:'Hyundai', name:'i30',       photo:'photos/hyundai-i30.jpg',       cat:'hyundai'},
+  {brand:'Hyundai', name:'Santa Fe',  photo:'photos/hyundai-santa-fe.jpg',  cat:'hyundai'},
+  {brand:'Hyundai', name:'Matrix',    photo:'photos/hyundai-matrix.jpg',    cat:'hyundai'},
+
+  {brand:'Nissan', name:'Tiida', photo:'photos/nissan-tiida.jpg', cat:'nissan'},
+
+  {brand:'Suzuki', name:'Carry', photo:'photos/suzuki-carry.jpg', cat:'suzuki'},
 ];
 
-function cardHtml(brand, name, photo) {
-  const waText = encodeURIComponent(`Hi Luckwell, I'd like to inquire about the used ${brand} ${name}.`);
-  const media = photo
-    ? `<img class="thumb" src="${photo}" alt="Used ${brand} ${name}">`
+const TABS = [
+  {id:'all',     label:'All Cars'},
+  {id:'toyota',  label:'Toyota'},
+  {id:'hyundai', label:'Hyundai'},
+  {id:'nissan',  label:'Nissan'},
+  {id:'suzuki',  label:'Suzuki'},
+];
+
+function cardHtml(item) {
+  const media = item.photo
+    ? `<img class="thumb" src="${item.photo}" alt="Used ${item.brand} ${item.name}">`
     : `<div class="thumb-placeholder">Photo coming soon</div>`;
   return `<div class="card">
     ${media}
     <div class="card-body">
-      <span class="brand-tag">${brand}</span>
-      <h3>${name}</h3>
-      <a class="btn-small" href="https://wa.me/${WA}?text=${waText}" target="_blank" rel="noopener">Inquire via WhatsApp</a>
+      <span class="brand-tag">${item.brand}</span>
+      <h3>${item.name}</h3>
     </div>
   </div>`;
 }
 
 const tabsEl = document.getElementById('tabs');
 const panelsEl = document.getElementById('panels');
+const countEl = document.getElementById('resultCount');
 
-CATEGORIES.forEach((cat, i) => {
+TABS.forEach((tab, i) => {
   const btn = document.createElement('button');
   btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
-  btn.textContent = cat.label;
-  btn.onclick = () => selectTab(cat.id);
+  btn.textContent = tab.label;
+  btn.onclick = () => selectTab(tab.id);
   tabsEl.appendChild(btn);
 
+  const items = tab.id === 'all' ? ITEMS : ITEMS.filter(it => it.cat === tab.id);
   const panel = document.createElement('div');
   panel.className = 'tab-panel' + (i === 0 ? ' active' : '');
-  panel.id = 'panel-' + cat.id;
-  panel.innerHTML = `<div class="grid">${cat.models.map(([name, photo]) => cardHtml(cat.label, name, photo)).join('')}</div>`;
+  panel.id = 'panel-' + tab.id;
+  panel.dataset.count = items.length;
+  panel.innerHTML = `<div class="grid">${items.map(cardHtml).join('')}</div>`;
   panelsEl.appendChild(panel);
 });
 
 function selectTab(id) {
-  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', CATEGORIES[i].id === id));
+  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', TABS[i].id === id));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + id));
+  const panel = document.getElementById('panel-' + id);
+  countEl.textContent = `${panel.dataset.count} model${panel.dataset.count == 1 ? '' : 's'}`;
 }
+
+selectTab('all');
 </script>
 
 </body>

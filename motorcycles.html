@@ -11,19 +11,22 @@
 
 <div class="utility-bar">
   <div class="inner">
-    <a href="mailto:luckwell@ms15.hinet.net">luckwell@ms15.hinet.net</a>
-    <a href="https://wa.me/886975137554" target="_blank" rel="noopener">WhatsApp Inquiry</a>
+    <span class="tagline">TAIWAN USED MOTORCYCLE &amp; CAR EXPORTER SINCE 1996</span>
+    <span class="links">
+      <a href="mailto:mary@luckwell.com">mary@luckwell.com</a>
+      <a href="https://wa.me/886975137554" target="_blank" rel="noopener">WhatsApp Inquiry</a>
+    </span>
   </div>
 </div>
 
 <header class="site-header">
-  <a class="logo" href="index.html"><img src="assets/logo.png" alt="LUCKWELL CO., LTD. 捷仕佳實業"></a>
+  <a class="logo" href="index.html"><img src="assets/logo.png" alt="Luckwell Co., Ltd."></a>
   <a class="tel" href="tel:+886223560332">TEL: +886-2-2356-0332<span>Mon–Fri 9:00–18:00 (Taiwan Time)</span></a>
 </header>
 
 <nav class="site-nav">
   <div class="inner">
-    <a class="home-link" href="index.html">HOME</a>
+    <a href="index.html">HOME</a>
     <a href="index.html#about">ABOUT US</a>
     <a class="active" href="motorcycles.html">USED MOTORCYCLE</a>
     <a href="cars.html">USED CARS</a>
@@ -33,124 +36,142 @@
 
 <div class="page-title">
   <div class="inner">
+    <div class="kicker">36 Models Available</div>
     <h1>USED MOTORCYCLE</h1>
-    <p>Yamaha, Kymco, SYM, PGO, Suzuki &amp; Aeon — available for wholesale export. Select a category below.</p>
+    <p>Yamaha, Kymco, SYM, PGO, Suzuki &amp; Aeon — available for wholesale export from Taiwan. Browse all models or select a brand below.</p>
   </div>
 </div>
 
 <section>
   <div class="tabs" id="tabs"></div>
+  <div class="result-count" id="resultCount"></div>
   <div id="panels"></div>
 </section>
 
 <footer>
-  &copy; <span id="year"></span> Luckwell Co., Ltd. 捷仕佳實業 — Taiwan Used Motorcycle &amp; Car Exporter.
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <div class="footer-grid">
+    <div>
+      <img src="assets/logo.png" alt="Luckwell Co., Ltd.">
+      <p>Taiwan-based exporter of used motorcycles and cars since 1996. Every vehicle pre-shipment inspected. Bulk procurement available for dealers and fleet buyers worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>QUICK LINKS</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="motorcycles.html">Used Motorcycle</a></li>
+        <li><a href="cars.html">Used Cars</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>CONTACT</h4>
+      <ul>
+        <li>14F, No. 79-1, Shueiyaun Road, Taipei, Taiwan</li>
+        <li><a href="tel:+886223560332">TEL +886-2-2356-0332</a></li>
+        <li>FAX +886-2-2364-9800</li>
+        <li><a href="mailto:mary@luckwell.com">mary@luckwell.com</a></li>
+        <li><a href="https://wa.me/886975137554" target="_blank" rel="noopener">WhatsApp +886 975 137 554</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; <span id="year"></span> Luckwell Co., Ltd. — Taiwan Used Motorcycle &amp; Car Exporter.
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </div>
 </footer>
 
 <script>
-const WA = '886975137554';
+const ITEMS = [
+  {brand:'Yamaha', name:'Cygnus 4',  photo:'photos/yamaha-cygnus4.jpg',    cat:'yamaha'},
+  {brand:'Yamaha', name:'Cygnus 5',  photo:'photos/yamaha-cygnus5.jpg',    cat:'yamaha'},
+  {brand:'Yamaha', name:'Cygnus 6',  photo:'photos/yamaha-cygnus6.jpg',    cat:'yamaha'},
+  {brand:'Yamaha', name:'Breeze 3',  photo:'photos/yamaha-breeze3.jpg',    cat:'yamaha'},
+  {brand:'Yamaha', name:'BWS',       photo:'photos/yamaha-bws.jpg',        cat:'yamaha'},
+  {brand:'Yamaha', name:'Ciao',      photo:'photos/yamaha-ciao.jpg',       cat:'yamaha'},
+  {brand:'Yamaha', name:'Force',     photo:'photos/yamaha-force.jpg',      cat:'yamaha'},
+  {brand:'Yamaha', name:'GTR Aero',  photo:'photos/yamaha-gtr-aero.jpg',   cat:'yamaha'},
+  {brand:'Yamaha', name:'SMAX',      photo:'photos/yamaha-smax.jpg',       cat:'yamaha'},
+  {brand:'Yamaha', name:'SWEET',     photo:'photos/yamaha-sweet.jpg',      cat:'yamaha'},
+  {brand:'Yamaha', name:'RS Zero',   photo:'photos/yamaha-rs-zero.jpg',    cat:'yamaha'},
+  {brand:'Yamaha', name:'RAY',       photo:'photos/yamaha-ray.jpg',        cat:'yamaha'},
+  {brand:'Yamaha', name:'Cuxi',      photo:'photos/yamaha-cuxi.jpg',       cat:'yamaha'},
 
-const CATEGORIES = [
-  {
-    id: 'yamaha',
-    label: 'Yamaha',
-    models: [
-      ['Cygnus 4', 'photos/yamaha-cygnus4.jpg'],
-      ['Cygnus 5', 'photos/yamaha-cygnus5.jpg'],
-      ['Cygnus 6', 'photos/yamaha-cygnus6.jpg'],
-      ['Breeze 3', 'photos/yamaha-breeze3.jpg'],
-      ['BWS', 'photos/yamaha-bws.jpg'],
-      ['Ciao', 'photos/yamaha-ciao.jpg'],
-      ['Force', 'photos/yamaha-force.jpg'],
-      ['GTR Aero', 'photos/yamaha-gtr-aero.jpg'],
-      ['SMAX', 'photos/yamaha-smax.jpg'],
-      ['SWEET', 'photos/yamaha-sweet.jpg'],
-      ['RS Zero', 'photos/yamaha-rs-zero.jpg'],
-      ['RAY', 'photos/yamaha-ray.jpg'],
-      ['Cuxi', 'photos/yamaha-cuxi.jpg'],
-    ]
-  },
-  {
-    id: 'kymco',
-    label: 'Kymco',
-    models: [
-      ['G5', 'photos/kymco-g5.jpg'],
-      ['G6', 'photos/kymco-g6.jpg'],
-      ['Megafi', 'photos/kymco-megafi.jpg'],
-      ['Many', 'photos/kymco-many.jpg'],
-      ['GP2', 'photos/kymco-gp2.jpg'],
-      ['Racing King', 'photos/kymco-racing-king.jpg'],
-      ['Racing S', 'photos/kymco-racing-s.jpg'],
-      ['Racing', 'photos/kymco-racing.jpg'],
-      ['VJR', 'photos/kymco-vjr.jpg'],
-      ['V2', 'photos/kymco-v2.jpg'],
-    ]
-  },
-  {
-    id: 'sym',
-    label: 'SYM',
-    models: [
-      ['Fighter', 'photos/sym-fighter.png'],
-      ['GR', null],
-      ['GT 125', 'photos/sym-gt125.png'],
-      ['JET', null],
-      ['Vivo', null],
-      ['Z1', null],
-      ['JET SL', null],
-    ]
-  },
-  {
-    id: 'others',
-    label: 'Others (PGO, Suzuki, Aeon)',
-    models: [
-      ['AEON ES', null],
-      ['PGO BON', null],
-      ['PGO Tigra', 'photos/pgo-tigra.jpg'],
-      ['PGO Jbubu', 'photos/pgo-jbubu.jpg'],
-      ['PGO Jbubu S', null],
-      ['Suzuki Address', null],
-    ]
-  }
+  {brand:'Kymco', name:'G5',           photo:'photos/kymco-g5.jpg',            cat:'kymco'},
+  {brand:'Kymco', name:'G6',           photo:'photos/kymco-g6.jpg',            cat:'kymco'},
+  {brand:'Kymco', name:'Megafi',       photo:'photos/kymco-megafi.jpg',        cat:'kymco'},
+  {brand:'Kymco', name:'Many',         photo:'photos/kymco-many.jpg',          cat:'kymco'},
+  {brand:'Kymco', name:'GP2',          photo:'photos/kymco-gp2.jpg',           cat:'kymco'},
+  {brand:'Kymco', name:'Racing King',  photo:'photos/kymco-racing-king.jpg',   cat:'kymco'},
+  {brand:'Kymco', name:'Racing S',     photo:'photos/kymco-racing-s.jpg',      cat:'kymco'},
+  {brand:'Kymco', name:'Racing',       photo:'photos/kymco-racing.jpg',        cat:'kymco'},
+  {brand:'Kymco', name:'VJR',          photo:'photos/kymco-vjr.jpg',           cat:'kymco'},
+  {brand:'Kymco', name:'V2',           photo:'photos/kymco-v2.jpg',            cat:'kymco'},
+
+  {brand:'SYM', name:'Fighter',  photo:'photos/sym-fighter.png', cat:'sym'},
+  {brand:'SYM', name:'GR',       photo:null,                     cat:'sym'},
+  {brand:'SYM', name:'GT 125',   photo:'photos/sym-gt125.png',   cat:'sym'},
+  {brand:'SYM', name:'JET',      photo:null,                     cat:'sym'},
+  {brand:'SYM', name:'Vivo',     photo:null,                     cat:'sym'},
+  {brand:'SYM', name:'Z1',       photo:null,                     cat:'sym'},
+  {brand:'SYM', name:'JET SL',   photo:null,                     cat:'sym'},
+
+  {brand:'Aeon',   name:'ES',        photo:null,                     cat:'others'},
+  {brand:'PGO',    name:'BON',       photo:null,                     cat:'others'},
+  {brand:'PGO',    name:'Tigra',     photo:'photos/pgo-tigra.jpg',   cat:'others'},
+  {brand:'PGO',    name:'Jbubu',     photo:'photos/pgo-jbubu.jpg',   cat:'others'},
+  {brand:'PGO',    name:'Jbubu S',   photo:null,                     cat:'others'},
+  {brand:'Suzuki', name:'Address',   photo:null,                     cat:'others'},
 ];
 
-function cardHtml(brand, name, photo) {
-  const waText = encodeURIComponent(`Hi Luckwell, I'd like to inquire about the used ${brand} ${name}.`);
-  const media = photo
-    ? `<img class="thumb" src="${photo}" alt="Used ${brand} ${name}">`
+const TABS = [
+  {id:'all',    label:'All Motorcycles'},
+  {id:'yamaha', label:'Yamaha'},
+  {id:'kymco',  label:'Kymco'},
+  {id:'sym',    label:'SYM'},
+  {id:'others', label:'Others (PGO, Suzuki, Aeon)'},
+];
+
+function cardHtml(item) {
+  const media = item.photo
+    ? `<img class="thumb" src="${item.photo}" alt="Used ${item.brand} ${item.name}">`
     : `<div class="thumb-placeholder">Photo coming soon</div>`;
   return `<div class="card">
     ${media}
     <div class="card-body">
-      <span class="brand-tag">${brand}</span>
-      <h3>${name}</h3>
-      <a class="btn-small" href="https://wa.me/${WA}?text=${waText}" target="_blank" rel="noopener">Inquire via WhatsApp</a>
+      <span class="brand-tag">${item.brand}</span>
+      <h3>${item.name}</h3>
     </div>
   </div>`;
 }
 
 const tabsEl = document.getElementById('tabs');
 const panelsEl = document.getElementById('panels');
+const countEl = document.getElementById('resultCount');
 
-CATEGORIES.forEach((cat, i) => {
+TABS.forEach((tab, i) => {
   const btn = document.createElement('button');
   btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
-  btn.textContent = cat.label;
-  btn.onclick = () => selectTab(cat.id);
+  btn.textContent = tab.label;
+  btn.onclick = () => selectTab(tab.id);
   tabsEl.appendChild(btn);
 
+  const items = tab.id === 'all' ? ITEMS : ITEMS.filter(it => it.cat === tab.id);
   const panel = document.createElement('div');
   panel.className = 'tab-panel' + (i === 0 ? ' active' : '');
-  panel.id = 'panel-' + cat.id;
-  const brandName = cat.id === 'others' ? '' : cat.label;
-  panel.innerHTML = `<div class="grid">${cat.models.map(([name, photo]) => cardHtml(cat.id === 'others' ? name.split(' ')[0] : brandName, cat.id === 'others' ? name.split(' ').slice(1).join(' ') || name : name, photo)).join('')}</div>`;
+  panel.id = 'panel-' + tab.id;
+  panel.dataset.count = items.length;
+  panel.innerHTML = `<div class="grid">${items.map(cardHtml).join('')}</div>`;
   panelsEl.appendChild(panel);
 });
 
 function selectTab(id) {
-  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', CATEGORIES[i].id === id));
+  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', TABS[i].id === id));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + id));
+  const panel = document.getElementById('panel-' + id);
+  countEl.textContent = `${panel.dataset.count} model${panel.dataset.count == 1 ? '' : 's'}`;
 }
+
+selectTab('all');
 </script>
 
 </body>
