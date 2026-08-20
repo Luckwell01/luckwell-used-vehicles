@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Used Car Catalog | Luckwell CO., LTD.</title>
+<meta name="description" content="Luckwell CO., LTD. used car catalog: Toyota, Hyundai, Nissan and Suzuki models available for wholesale export from Taiwan. Inquire via WhatsApp.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="inner">
+    <a href="mailto:luckwell@ms15.hinet.net">luckwell@ms15.hinet.net</a>
+    <a href="https://wa.me/886975137554" target="_blank" rel="noopener">WhatsApp Inquiry</a>
+  </div>
+</div>
+
+<header class="site-header">
+  <a class="logo" href="index.html"><img src="assets/logo.png" alt="LUCKWELL CO., LTD. 捷仕佳實業"></a>
+  <a class="tel" href="tel:+886223560332">TEL: +886-2-2356-0332<span>Mon–Fri 9:00–18:00 (Taiwan Time)</span></a>
+</header>
+
+<nav class="site-nav">
+  <div class="inner">
+    <a class="home-link" href="index.html">HOME</a>
+    <a href="index.html#about">ABOUT US</a>
+    <a href="motorcycles.html">USED MOTORCYCLE</a>
+    <a class="active" href="cars.html">USED CARS</a>
+    <a href="index.html#contact">CONTACT</a>
+  </div>
+</nav>
+
+<div class="page-title">
+  <div class="inner">
+    <h1>USED CARS</h1>
+    <p>Toyota, Hyundai, Nissan &amp; Suzuki — available for wholesale export. Select a brand below.</p>
+  </div>
+</div>
+
+<section>
+  <div class="tabs" id="tabs"></div>
+  <div id="panels"></div>
+</section>
+
+<footer>
+  &copy; <span id="year"></span> Luckwell Co., Ltd. 捷仕佳實業 — Taiwan Used Motorcycle &amp; Car Exporter.
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</footer>
+
+<script>
+const WA = '886975137554';
+
+const CATEGORIES = [
+  {
+    id: 'toyota',
+    label: 'Toyota',
+    models: [
+      ['Corolla Altis', 'photos/toyota-corolla.jpg'],
+      ['Camry', 'photos/toyota-camry.jpg'],
+      ['Yaris', 'photos/toyota-yaris.jpg'],
+      ['Wish', 'photos/toyota-wish.jpg'],
+      ['Vios', 'photos/toyota-vios.jpg'],
+    ]
+  },
+  {
+    id: 'hyundai',
+    label: 'Hyundai',
+    models: [
+      ['i30', 'photos/hyundai-i30.jpg'],
+      ['Santa Fe', 'photos/hyundai-santa-fe.jpg'],
+      ['Matrix', 'photos/hyundai-matrix.jpg'],
+    ]
+  },
+  {
+    id: 'nissan',
+    label: 'Nissan',
+    models: [
+      ['Tiida', 'photos/nissan-tiida.jpg'],
+    ]
+  },
+  {
+    id: 'suzuki',
+    label: 'Suzuki',
+    models: [
+      ['Carry', 'photos/suzuki-carry.jpg'],
+    ]
+  }
+];
+
+function cardHtml(brand, name, photo) {
+  const waText = encodeURIComponent(`Hi Luckwell, I'd like to inquire about the used ${brand} ${name}.`);
+  const media = photo
+    ? `<img class="thumb" src="${photo}" alt="Used ${brand} ${name}">`
+    : `<div class="thumb-placeholder">Photo coming soon</div>`;
+  return `<div class="card">
+    ${media}
+    <div class="card-body">
+      <span class="brand-tag">${brand}</span>
+      <h3>${name}</h3>
+      <a class="btn-small" href="https://wa.me/${WA}?text=${waText}" target="_blank" rel="noopener">Inquire via WhatsApp</a>
+    </div>
+  </div>`;
+}
+
+const tabsEl = document.getElementById('tabs');
+const panelsEl = document.getElementById('panels');
+
+CATEGORIES.forEach((cat, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
+  btn.textContent = cat.label;
+  btn.onclick = () => selectTab(cat.id);
+  tabsEl.appendChild(btn);
+
+  const panel = document.createElement('div');
+  panel.className = 'tab-panel' + (i === 0 ? ' active' : '');
+  panel.id = 'panel-' + cat.id;
+  panel.innerHTML = `<div class="grid">${cat.models.map(([name, photo]) => cardHtml(cat.label, name, photo)).join('')}</div>`;
+  panelsEl.appendChild(panel);
+});
+
+function selectTab(id) {
+  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', CATEGORIES[i].id === id));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + id));
+}
+</script>
+
+</body>
+</html>
